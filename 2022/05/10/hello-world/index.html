@@ -219,14 +219,6 @@
       </a>
     
       <a 
-        href="/about" 
-        class="navbar-menu-item">
-        
-          关于
-        
-      </a>
-    
-      <a 
         href="/links" 
         class="navbar-menu-item">
         
@@ -290,7 +282,7 @@
     
     
       <span class="dot"></span>
-      <span>75 字</span>
+      <span>1.2k 字</span>
     
   </div>
   
@@ -317,19 +309,116 @@
   <div 
     id="section" 
     class="post-content">
-    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="highlight"><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre>
+    <h1 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a><strong>sql注入</strong></h1><h3 id="什么是SQL"><a href="#什么是SQL" class="headerlink" title="什么是SQL"></a><strong>什么是SQL</strong></h3><p><strong>SQL注入是服务器端未严格校验客户端发送的数据，而导致服务端你sql语句被恶意修改并成功执行的行为称为sql注入。</strong></p>
+<h3 id="SQL注入的原理"><a href="#SQL注入的原理" class="headerlink" title="SQL注入的原理"></a><strong>SQL注入的原理</strong></h3><p>SQL注入攻击是通过操作输入来修改SQL语句，用以达到执行代码对WEB服务器进行攻击的方法。</p>
+<p>sql注入漏洞的产生需要满足两个条件</p>
+<p>参数用户可控：从前端传给后端的传输内容是用户可以控制</p>
+<p>参数带入数据库查询：传入的参数拼接到SQL语句，且带入数据库查询</p>
+<h3 id="sql注入攻击步骤"><a href="#sql注入攻击步骤" class="headerlink" title="sql注入攻击步骤"></a><strong>sql注入攻击步骤</strong></h3><p>1.判断环境，寻找注入点</p>
+<p>2.找到注入点，判断数据类型</p>
+<p>3.根据注入参数类型，构造带有特征字符的sql语句并提交</p>
+<p>4.获得信息，转入下一步攻击</p>
+<h3 id="sql注入分类"><a href="#sql注入分类" class="headerlink" title="sql注入分类"></a><strong>sql注入分类</strong></h3><p>可联合查询注入，可多语句查询注入（堆叠查询），布尔型注入，报错型注入，基于时间延迟注入</p>
+<h3 id="sql注入类型的区分详解"><a href="#sql注入类型的区分详解" class="headerlink" title="sql注入类型的区分详解"></a><strong>sql注入类型的区分详解</strong></h3><p>常用的接收方式不同可以分为以下三种</p>
+<p>GET</p>
+<p>GET请求的参数是放在URL里的，GET请求的URL传参有长度限制 中文需要URL编码</p>
+<p>post</p>
+<p>POST请求参数是放在请求body里的，长度没有限制</p>
+<p>cookie</p>
+<p>cookie参数放在请求头信息，提交的时候 服务器会从请求头获取参数。</p>
+<pre class="highlight"><span class="line">&lt;?php</span><br><span class="line">print_r($_GET);</span><br><span class="line">print &quot;&lt;hr&gt;&quot;;</span><br><span class="line">print_r($_POST);</span><br><span class="line">print &quot;&lt;hr&gt;&quot;;</span><br><span class="line">print_r($_COOKIE);</span><br><span class="line">?&gt;</span><br></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="highlight"><span class="line">$ hexo server</span><br></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="highlight"><span class="line">$ hexo generate</span><br></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="highlight"><span class="line">$ hexo deploy</span><br></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h2 id="SQL注入基础"><a href="#SQL注入基础" class="headerlink" title="SQL注入基础"></a>SQL注入基础</h2><h3 id="数据库的分类"><a href="#数据库的分类" class="headerlink" title="数据库的分类"></a><strong>数据库的分类</strong></h3><p><strong>1.结构化数据库：</strong></p>
+<p>Access，Mysql，Oracle，sqlite</p>
+<p><strong>2.非关系型数据库</strong></p>
+<p>Redis，mongodb</p>
+<p><strong>库的操作命令</strong></p>
+<p>列出所有库 show databases</p>
+<p>创建库 create database</p>
+<p>删除库 drop database</p>
+<p><strong>表的基本命令</strong></p>
+<p>列出所有表 show tables</p>
+<p>创建表 create table</p>
+<p>删除表 dorp table</p>
+<p>查询表的属性 desc table 表名</p>
+<p>查询表的所有字段内容 select * from table</p>
+<p>查询指定字段内容 select username,password from table</p>
+<p>创建表 create table if not user（里面字段名）engine&#x3D;myisam default charset&#x3D;utf8</p>
+<p>creata table if not exists user 创建表user是否存在 不存在即可创建</p>
+<p>id int(10) id是字段名 int(10)整型 长度10</p>
+<p>not null 字段在增加时候不能为空 </p>
+<p>auto_increment  id字段在增加数据时会自动增加1</p>
+<p>primary key(id) 设置主键为id</p>
+<p>unsigned 无符号即正数 </p>
+<p>修改表名 rename table user to users</p>
+<p><strong>字段名增 改 删</strong></p>
+<p>增加字段</p>
+<p>alter table user add [column] 字段名 数据类型 [列属性][位置]</p>
+<p>first 第一个位置</p>
+<p>after 在哪个字段之后 默认在最后</p>
+<p>alter table user add email varchar(100) not null</p>
+<p><strong>修改字段属性</strong></p>
+<p>alter table 表名 modify 字段名 数据类型 [列属性][位置]</p>
+<p>alter table user modify username varchar(100) not null;</p>
+<p><strong>更改字段名</strong></p>
+<p>alter table 表名 change 老字段名 新字段名 数据类型[列属性][位置]</p>
+<p>alter table user change username name varchar(10) not null;</p>
+<p><strong>删除字段</strong></p>
+<p>alter table 表名 drop</p>
+<p>alter table user drop email</p>
+<p><strong>表的增删改查</strong></p>
+<p>增 插入数据</p>
+<p>insert into table_name ( field1, field2,…fieldn )</p>
+<p>​            values</p>
+<p>​            ( value1, value2,…valuen );</p>
+<p>单个插入   insert into user(username,password)values(‘admin’,’password’);</p>
+<p>多个插入   insert into user(username,password)values(‘admin’,’password’),(‘moonsec’,’123456’)</p>
+<p><strong>更新数据</strong></p>
+<p>UPDATE &lt;表名&gt; SET 字段 1&#x3D;值 1 [,字段 2&#x3D;值 2… ] [WHERE 子句 ][ORDER BY 子句] [LIMIT 子句]</p>
+<p>update user set email &#x3D; ‘<a href="mailto:&#x61;&#x64;&#x6d;&#x69;&#x6e;&#64;&#109;&#111;&#x6f;&#x6e;&#x73;&#101;&#99;&#x2e;&#x63;&#x6f;&#109;">&#x61;&#x64;&#x6d;&#x69;&#x6e;&#64;&#109;&#111;&#x6f;&#x6e;&#x73;&#101;&#99;&#x2e;&#x63;&#x6f;&#109;</a>’ where id&#x3D;1</p>
+<p><strong>删除数据</strong></p>
+<p>DELETE FROM &lt;表名&gt; [WHERE 子句] [ORDER BY 子句] [LIMIT 子句]</p>
+<p>delete from user where id&#x3D;1</p>
+<p><strong>去重</strong></p>
+<p> distinct</p>
+<p><strong>别名查询</strong></p>
+<p> select username as moon_name from user where id&#x3D;2</p>
+<p>order by 字段 desc desc 从高到底 asc 从低到高</p>
+<p>where 条件查询</p>
+<p>group by 分组查询</p>
+<p>having 查询 </p>
+<p><strong>union查询</strong></p>
+<p>union 合并两个或多个 select 语句的结果</p>
+<p>union内部的每个select语句必须拥有相同数量的字段的内连接只链接匹配的行</p>
+<p>select * from article inner join user on article.uid&#x3D;user.id</p>
+<p>左外链接 优先显示左边的全部记录 left join</p>
+<p>select * from user left join article on user.id&#x3D;article.uid</p>
+<p>右外链接 优先显示右边的全部记录</p>
+<p>select * from user right join article on user.id&#x3D;article.uid</p>
+<p>in子查询</p>
+<p>测试结果是否在某一个集合里</p>
+<p>判断注入的技巧</p>
+<p>判断是否存在注入</p>
+<p>布尔型判断</p>
+<p>and 1&#x3D;1</p>
+<p>and 1&#x3D;2</p>
+<p>or 1&#x3D;1</p>
+<p>or 1&#x3D;2</p>
+<p>延时判断 </p>
+<p>and sleep(10)</p>
+<p>判断存在注入的数据类型</p>
+<p>int 整型</p>
+<p>and 1&#x3D;1</p>
+<p>and 1&#x3D;2</p>
+<p>string 字符串</p>
+<p>‘ and ‘x’&#x3D;’x</p>
+<p>‘ and ‘a’&#x3D;’b</p>
+<p>like 模糊</p>
+<p> %’ and 1&#x3D;1</p>
+<p>%’ and 1&#x3D;2 </p>
+<p><strong>注释符号</strong></p>
+<p>注释符后面的语句不会执行</p>
+<p>#– 注意后面有一个空格&#x2F;&#x2F;</p>
 
   </div>
   <div>
@@ -408,7 +497,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="toc-text">sql注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSQL"><span class="toc-text">什么是SQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">SQL注入的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E6%AD%A5%E9%AA%A4"><span class="toc-text">sql注入攻击步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5%E5%88%86%E7%B1%BB"><span class="toc-text">sql注入分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%86%E8%AF%A6%E8%A7%A3"><span class="toc-text">sql注入类型的区分详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80"><span class="toc-text">SQL注入基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">数据库的分类</span></a></li></ol></li></ol></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -456,7 +545,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="toc-text">sql注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSQL"><span class="toc-text">什么是SQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">SQL注入的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E6%AD%A5%E9%AA%A4"><span class="toc-text">sql注入攻击步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5%E5%88%86%E7%B1%BB"><span class="toc-text">sql注入分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%86%E8%AF%A6%E8%A7%A3"><span class="toc-text">sql注入类型的区分详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80"><span class="toc-text">SQL注入基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">数据库的分类</span></a></li></ol></li></ol></li></ol>
       </div>
     </article>
   
@@ -516,7 +605,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="toc-text">sql注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSQL"><span class="toc-text">什么是SQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">SQL注入的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E6%AD%A5%E9%AA%A4"><span class="toc-text">sql注入攻击步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5%E5%88%86%E7%B1%BB"><span class="toc-text">sql注入分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%86%E8%AF%A6%E8%A7%A3"><span class="toc-text">sql注入类型的区分详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80"><span class="toc-text">SQL注入基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">数据库的分类</span></a></li></ol></li></ol></li></ol>
     </article>
   
   
