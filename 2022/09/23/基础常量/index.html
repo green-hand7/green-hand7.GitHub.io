@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/img/1.jpg">
-  <title>数据包扩展</title>
+  <title>基础常量</title>
   
     
       <meta 
         property="og:title" 
-        content="数据包扩展">
+        content="基础常量">
     
     
       <meta 
         property="og:url" 
-        content="http://example.com/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/index.html">
+        content="http://example.com/2022/09/23/%E5%9F%BA%E7%A1%80%E5%B8%B8%E9%87%8F/index.html">
     
     
       <meta 
@@ -53,7 +53,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="web">
+            content="java">
         
       
     
@@ -259,11 +259,11 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      数据包扩展
+      基础常量
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-09-23T15:31:37.000Z">
+    <time datetime="2022-09-23T15:49:27.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
@@ -274,15 +274,15 @@
       <span class="dot"></span>
       
         <a 
-          href="/categories/web/" 
+          href="/categories/java/" 
           class="post-meta-link">
-          web
+          java
         </a>
       
     
     
       <span class="dot"></span>
-      <span>1.3k 字</span>
+      <span>845 字</span>
     
   </div>
   
@@ -297,9 +297,9 @@
         
           
           <a 
-            href="/tags/web/" 
+            href="/tags/java/" 
             class="post-meta-link">
-            web
+            java
           </a>
         
       </div>
@@ -309,33 +309,87 @@
   <div 
     id="section" 
     class="post-content">
-    <h3 id="https-amp-http"><a href="#https-amp-http" class="headerlink" title="https&amp;http"></a>https&amp;http</h3><p><img src="/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/1.png" alt="http" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/1.png" class="lozad post-image"><br><img src="/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/2.png" alt="https" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/2.png" class="lozad post-image"></p>
+    <h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a><strong>常量</strong></h2><h5 id="概念："><a href="#概念：" class="headerlink" title="概念："></a><strong>概念</strong>：</h5><p>在程序的执行过程中，其值不会发生改变的量（数据）</p>
+<h5 id="常量的分类"><a href="#常量的分类" class="headerlink" title="常量的分类"></a><strong>常量的分类</strong></h5><p>字符串：被双引号所包裹的内容</p>
+<p>整数常量 整数，例如：-10、0、88等 </p>
+<p>小数常量 小数，例如：-5.5、1.0、88.88等 </p>
+<p>字符常量 用单引号括起来的一个字符，例如：’a’、’5’、’B’、’中’等</p>
+<p> 布尔常量 布尔值，表示真假，只有两个值true和false </p>
+<p>空常量 一个特殊的值，空值，值为null 除空常量外，其他常量均可使用输出语句直接输出。</p>
+<p>注意：null空常量不能输出打印</p>
+<pre class="highlight"><span class="line">public class hall&#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		System.out.println(&quot;HelloWorld&quot;); //字符串</span><br><span class="line">		System.out.println(123);//整数</span><br><span class="line">		System.out.println(12.3);//小数</span><br><span class="line">		System.out.println(&#x27;a&#x27;);//字符</span><br><span class="line">		System.out.println(true);//布尔值</span><br><span class="line">		System.out.println(5&gt;10);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre>
+
+<h5 id="变量介绍"><a href="#变量介绍" class="headerlink" title="变量介绍"></a><strong>变量介绍</strong></h5><p><strong>概念</strong>：变量就是内存中调度存储空间，空间中存储着经常发生改变的变量（数据）</p>
+<p><strong>变量定义的格式：</strong></p>
+<p>数据类型 变量名&#x3D;数据值</p>
+<p>数据类型：为空间中存储的数据加入类型限制。如 整数？小数？</p>
+<p>变量名：自己要为空间起的名字</p>
+<p>数据值：空间中要有存储数值</p>
+<p><strong>数据类型</strong></p>
+<p>java语言是强类型语言，对于每一种数据都给出了明确的数据类型，不同的数据类型也分配了不同的内存空间，所有他们表示的数据大小也是不一样的。</p>
+<p><strong>数据类型内存占用和取值范围</strong></p>
+<p>不同的数据类型也分配了不同的内存空间，所以他们表示的数据大小也是不一样的。</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>关键字</th>
+<th>内存占用（字节）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>整数</td>
+<td>byte short <strong>int</strong> long</td>
+<td>1 2 4 8</td>
+</tr>
+<tr>
+<td>浮点数</td>
+<td>float <strong>double</strong></td>
+<td>4 8</td>
+</tr>
+<tr>
+<td>字符</td>
+<td>char</td>
+<td>2</td>
+</tr>
+<tr>
+<td>布尔</td>
+<td>boolean</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>整数选int  小数选double</p>
+<p>类（class） 接口（interface） 数组（[]）</p>
+<h5 id="变量的定义和使用"><a href="#变量的定义和使用" class="headerlink" title="变量的定义和使用"></a>变量的定义和使用</h5><p><strong>变量的定义</strong></p>
+<pre class="highlight"><span class="line">public class bl &#123;</span><br><span class="line">    public static void main(String[] args)  &#123;</span><br><span class="line">	    //格式；数据类型 变量名=数据值;</span><br><span class="line">		//整数类型变量;</span><br><span class="line">		int a=10;</span><br><span class="line">		System.out.println(a);</span><br><span class="line">		//小数</span><br><span class="line">		double b= 1.1;</span><br><span class="line">		System.out.println(b);</span><br><span class="line">		//字符串</span><br><span class="line">		char c = &#x27;a&#x27;;</span><br><span class="line">		System.out.println(c);</span><br><span class="line">		//布尔</span><br><span class="line">		boolean d =1&gt;2;</span><br><span class="line">		System.out.println(d);	</span><br><span class="line">	</span><br><span class="line">	&#125; </span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre>
+
+<p><strong>变量的使用</strong></p>
+<p>根据变量的名字来进行使用</p>
+<pre class="highlight"><span class="line">int a=10;</span><br><span class="line">System.out.println(a);</span><br><span class="line">a =20</span><br><span class="line">System.out.println(a);</span><br></pre>
+
+<p><strong>总结</strong>：变量就是内存中的空间，内部储存着不断发生变化的数据</p>
+<p><strong>变量的注意事项</strong></p>
 <ul>
-<li>HTTPS协议需要到CA申请证书，一般免费的证书很少，需要缴费。<br> HTTP协议运行在tcp之上，所有传输的内容都是明文，HTTPS运行在SSL&#x2F;TLS之上，SSL&#x2F;TLS运行在TCP之上，所有传输的内容都经过加密的。</li>
-<li>HTTP和HTTPS使用的是完全不同的链接方式，用的端口也不一样，前者是80，后者是443</li>
-<li>HTTPS可以有效的防止运营商劫持，解决了防劫持的一个大问题<br>Request请求数据包数据格式</li>
+<li><p>变量名不允许重复定义</p>
+</li>
+<li><p>一天语句可以定义多个变量，但需要使用逗号进行分割</p>
+</li>
+<li><p>变量在使用之前一定要进行赋值</p>
+</li>
+<li><p>定义float和long变量注意事项</p>
+<p>定义float变量时：需要在数值后面加入f（大小写都可以）</p>
+<p>定义long变量时：需要在数值后面加入L（大小写都可以）</p>
+</li>
+<li><p>变量的作用域范围</p>
+</li>
 </ul>
-<p><code>GET / HTTP/1.1 Host: www.baidu.com Cache-Control: max-age=0 Connection: keep-alive Upgrade-Insecure-Requests: 1 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9 Accept-Encoding: gzip, deflate, br Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6</code><br>Form Data</p>
-<ul>
-<li>name&#x3D;name&amp;age&#x3D;11<br>请求行</li>
-<li>请求行有三个标记组成：请求方法、请求URL和HTTP版本，他们用空格分享。</li>
-<li>列如：GET &#x2F;index.html HTTP&#x2F;1.1</li>
-</ul>
-<p><code>HTTP 规划定义了8种可能的请求方法： GET：检索URL中标识支援的一个简单请求 HEAD：与GET方法相同，服务器只返回状态行和头标，并不返回请求文档 POST：服务器接受被写入客户端输出流中的数据的请求 PUT：服务器保存请求数据作为指定URL新内容的请求 DELETE：服务器删除URL中命令的资源的请求 OPTIONS:关于服务器支持的请求方法信息的请求 TRACE：web服务器反馈HTTP请求和其头标的请求 CONNECT：已文档化，但当前未实现的一个方法，预留做隧道处理</code><br>请求头</p>
-<p><code>有关键字/值对组成，每行一对，关键字和值用冒号分享。请求头标通知服务器腾于客户端的功能和表示 HOST：主机或域名地址 Accept：只浏览器或其他客户可以接受的MIME文件格式。Servlet可以根据它判断并返回适当的文件格式 User-Agent：是客户浏览器名称 Host:对应网址url中的web名称和端口号 Accept-Language:指出浏览器可以接受的语言种类，如en或en-us，指英语。 Connection:用来告诉服务器是否可以维持固定的HTTP链接。http是无连接，HTTP/1.1使用Keep-Alive为默认值，这样，当浏览器需要多个文件时（比如一个HTTP文件或相关的图形文件），不需要每次都建立链接 Cookie：浏览器用这个属性向服务器发送Cookie。 Cookie是在浏览器中寄存的小型数据体，它可以记载和服务器相关的用户信息，也可以用来实现会话功能 Referer ： 表 明 产 生 请 求 的 网 页 URL 。 如 比 从 网 页 /icconcept/index.jsp 中 点 击 一 个 链 接 到 网 页/icwork/search ， 在 向 服 务 器 发 送 的 GET/icwork/search 中 的 请 求 中 ， Referer 是http://hostname:8080/icconcept/index.jsp。这个属性可以用来跟踪 Web 请求是从什么网站来的。 Content-Type：用来表名 request 的内容类型。可以用 HttpServletRequest getContentType()方法取得。 Accept-Charset：指出浏览器可以接受的字符编码。英文浏览器的默认值是 ISO-8859-1. Accept-Encoding：指出浏览器可以接受的编码方式。编码方式不同于文件格式，它是为了压缩文件并加 速文件传递速度。浏览器在接收到 Web 响应之后先解码，然后再检查文件格式。</code></p>
-<h4 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h4><ul>
-<li>最后一个请求头标之后时空行，发送回车符和退行，通知服务器以下不在有头标</li>
-</ul>
-<h4 id="请求数据"><a href="#请求数据" class="headerlink" title="请求数据"></a>请求数据</h4><ul>
-<li>使用POST传送，最常使用的是Content-type和Content-Length头标</li>
-</ul>
-<h4 id="Response返回数据包数据格式"><a href="#Response返回数据包数据格式" class="headerlink" title="Response返回数据包数据格式"></a>Response返回数据包数据格式</h4><p>Response请求数据包数据格式</p>
-<p><code>一个响应由四个部分组成；状态行、响应头标、空行、响应数据 1.状态行：协议版本、数字形式的状态代码描述，个元素之间以空格分隔 2.响应头标：包含服务器类型、日期、长度、内容类型等 3.空行：响应头行与响应体之间用空行隔开 4.响应数据：浏览器会将实体内容中的数据取出来，生成相应的页面</code></p>
-<h4 id="HTTP响应码"><a href="#HTTP响应码" class="headerlink" title="HTTP响应码"></a>HTTP响应码</h4><p>&#96;&#96;&#96;1XX:信息，请求收到，继续处理<br>2XX:成功，行为被成功的接受、理解和采纳<br>3XX:重定向，为了完成请求，必须进一步执行的动作<br>4XX:客户端错误<br>5XX:服务器错</p>
-<p>200  存在文件<br>403  存在文件夹<br>3xx  均可你存在<br>404  不存在文件及文件夹<br>500  均可能存在 </p>
-<h2 id="响应头标"><a href="#响应头标" class="headerlink" title="响应头标"></a>响应头标</h2><p>像请求头标一样，他们指出服务器的功能，标识出响应数据的细节</p>
-<h2 id="空行-1"><a href="#空行-1" class="headerlink" title="空行"></a>空行</h2><p>最后一个响应头标之后是一个空行，发送回车符和退行，表明服务器以下不在有头</p>
-<h2 id="响应数据"><a href="#响应数据" class="headerlink" title="响应数据"></a>响应数据</h2><p>HTTP文档和图像等，也就是html本身&#96;&#96;&#96;</p>
+<h5 id="键盘录入"><a href="#键盘录入" class="headerlink" title="键盘录入"></a>键盘录入</h5><p>什么是键盘录入</p>
+<p>目的：为了让我们操作的数据，变得更加灵活</p>
+<p>eg：</p>
+<pre class="highlight"><span class="line">int a=10；</span><br><span class="line">这里a虽然是个变量，但记录的值，却是手动写死的</span><br><span class="line">能不能让a变量的值，灵活起来，用户输入什么，a变量就记录什么</span><br></pre>
+
+<pre class="highlight"><span class="line">步骤1：导包，需要写在class的上面</span><br><span class="line">impot java.util.Scanner;</span><br><span class="line">步骤2：创建对象</span><br><span class="line">Scanner sc</span><br></pre>
+
 
   </div>
   <div>
@@ -355,8 +409,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="http://example.com/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/">
-            http://example.com/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/
+            href="http://example.com/2022/09/23/%E5%9F%BA%E7%A1%80%E5%B8%B8%E9%87%8F/">
+            http://example.com/2022/09/23/%E5%9F%BA%E7%A1%80%E5%B8%B8%E9%87%8F/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
@@ -368,13 +422,13 @@
   
     <div class="nav-item-prev">
       <a 
-        href="/2022/09/23/%E5%8A%A0%E5%AF%86-cdn-%E4%BF%A1%E6%81%AF-DNS/" 
+        href="/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/" 
         class="nav-link">
         <i class="iconfont icon-left nav-prev-icon"></i>
         <div>
           <div class="nav-label">上一篇</div>
           
-            <div class="nav-title">加密&amp;cdn&amp;信息&amp;DNS </div>
+            <div class="nav-title">我们在南京生活 </div>
           
         </div>
       </a>
@@ -383,12 +437,12 @@
   
     <div class="nav-item-next">
       <a 
-        href="/2022/09/23/%E5%9E%8B%E5%8F%B7%E4%B8%8D%E5%A5%BD/" 
+        href="/2022/09/23/sql%E7%9B%B2%E6%B3%A8/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">型号不好 </div>
+            <div class="nav-title">sql盲注 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -442,7 +496,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#https-amp-http"><span class="toc-text">https&amp;http</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE"><span class="toc-text">请求数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Response%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%8C%85%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-text">Response返回数据包数据格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E5%93%8D%E5%BA%94%E7%A0%81"><span class="toc-text">HTTP响应码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4%E6%A0%87"><span class="toc-text">响应头标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C-1"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE"><span class="toc-text">响应数据</span></a>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-text">概念：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">常量的分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%BB%8B%E7%BB%8D"><span class="toc-text">变量介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-text">变量的定义和使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%94%AE%E7%9B%98%E5%BD%95%E5%85%A5"><span class="toc-text">键盘录入</span></a></li></ol></li></ol></li></ol></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -490,7 +544,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#https-amp-http"><span class="toc-text">https&amp;http</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE"><span class="toc-text">请求数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Response%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%8C%85%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-text">Response返回数据包数据格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E5%93%8D%E5%BA%94%E7%A0%81"><span class="toc-text">HTTP响应码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4%E6%A0%87"><span class="toc-text">响应头标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C-1"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE"><span class="toc-text">响应数据</span></a>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-text">概念：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">常量的分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%BB%8B%E7%BB%8D"><span class="toc-text">变量介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-text">变量的定义和使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%94%AE%E7%9B%98%E5%BD%95%E5%85%A5"><span class="toc-text">键盘录入</span></a></li></ol></li></ol></li></ol></li></ol>
       </div>
     </article>
   
@@ -589,7 +643,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#https-amp-http"><span class="toc-text">https&amp;http</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE"><span class="toc-text">请求数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Response%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%8C%85%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-text">Response返回数据包数据格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E5%93%8D%E5%BA%94%E7%A0%81"><span class="toc-text">HTTP响应码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4%E6%A0%87"><span class="toc-text">响应头标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C-1"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE"><span class="toc-text">响应数据</span></a>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-text">概念：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">常量的分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%BB%8B%E7%BB%8D"><span class="toc-text">变量介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-text">变量的定义和使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%94%AE%E7%9B%98%E5%BD%95%E5%85%A5"><span class="toc-text">键盘录入</span></a></li></ol></li></ol></li></ol></li></ol>
     </article>
   
   

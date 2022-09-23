@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/img/1.jpg">
-  <title>分类</title>
+  <title>我们在南京生活</title>
   
     
       <meta 
         property="og:title" 
-        content="分类">
+        content="我们在南京生活">
     
     
       <meta 
         property="og:url" 
-        content="http://example.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+        content="http://example.com/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/index.html">
     
     
       <meta 
@@ -36,6 +36,26 @@
         content="/img/1.jpg">
     
     
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-09-23">
+      <meta 
+        property="og:article:modified_time" 
+        content="2022-09-23">
+      <meta 
+        property="og:article:author" 
+        content="菜鸡の博客">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="CTF">
+        
+      
     
   
   <script>
@@ -143,6 +163,8 @@
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
   
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
 <meta name="generator" content="Hexo 6.2.0"></head>
 
   <body>
@@ -234,49 +256,158 @@
         <div class="container">
           <div class="columns">
             <main class="main-column">
-<div class="card card-content category-page-card">
-  <div class="categories-page-title">分类&nbsp-&nbsp数据库</div>
-</div>
-<div class="archive-timeline">
-  
-  
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      我们在南京生活
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-09-23T15:51:37.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-09-23</span>
+    </time>
     
-      <div class="archive-timeline-tag"><span>2022</span></div>
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/CTF/" 
+          class="post-meta-link">
+          CTF
+        </a>
       
     
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2022-09-23</div>
-          <div class="archive-timeline-post-content">
-            <a 
-              href="/2022/09/23/sql%E7%9B%B2%E6%B3%A8/" 
-              class="archive-timeline-post-item">
-              sql盲注
-            </a>
-          </div>
-        </div>
+    
+      <span class="dot"></span>
+      <span>208 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/CTF/" 
+            class="post-meta-link">
+            CTF
+          </a>
+        
       </div>
     </div>
   
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h5 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h5><p>南京是江苏的省会城市，又被网友戏称“徽京”。</p>
+<p>在城市繁杂中，又有趣的声音，而这种有趣的往往被干扰。</p>
+<p>于是我们可以采用物理的方法让震动声波变得稳定。</p>
+<p>我们在交流过程中发声音被干扰，于是使用了更加稳定的方法（CW）</p>
+<h5 id="题目附件"><a href="#题目附件" class="headerlink" title="题目附件"></a><strong>题目附件</strong></h5><p><code>https://wxctf-1307622960.cos.ap-nanjing.myqcloud.com/CTF%E9%A2%98%E9%99%84%E4%BB%B6/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB-misc.zip</code><br><strong>解答</strong><br>先用工具拿到音频先听了下，感觉是频段隐写用Audacity打开音频，先看下频谱图：<br><img src="/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/1.png" alt="音频谱图" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/1.png" class="lozad post-image"><br>得到了：<br><img src="/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/2.png" alt="音频图" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/2.png" class="lozad post-image"><br>显而易见的，这是一段摩斯密码。细条转”.”粗条转”-“得到：<br><img src="/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/3.png" alt="密码" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/3.png" class="lozad post-image"><br>通过摩斯电码解码得到flag为<br><img src="/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/4.png" alt="flag" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/4.png" class="lozad post-image"></p>
+
+  </div>
+  <div>
     
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2022-09-23</div>
-          <div class="archive-timeline-post-content">
-            <a 
-              href="/2022/09/23/%E6%95%B0%E6%8D%AE%E5%BA%933306/" 
-              class="archive-timeline-post-item">
-              数据库3306
-            </a>
-          </div>
-        </div>
+      <div 
+        class="post-note note-warning copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            菜鸡の博客
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="http://example.com/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/">
+            http://example.com/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
       </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/09/23/%E5%9F%BA%E7%A1%80%E5%B8%B8%E9%87%8F/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">基础常量 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
     </div>
   
 </div>
-</main>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: '6xOtnwQBAa8C9onmW8iKKfRV-gzGzoHsz',
+        appKey: 'Oz1Yxw8XLVsyfiGux6t1Snk0',
+        placeholder: 'Just go go',
+        path: window.location.pathname,
+        avatar: 'mp',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        serverURLs: 'https://6xotnwqb.lc-cn-n1-shared.com',
+        emojiCDN: '',
+        emojiMaps: '',
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+''
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%99%84%E4%BB%B6"><span class="toc-text">题目附件</span></a></li></ol>
+</div></main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -314,6 +445,18 @@
               </div>
                <div class="sticky-tablet">
   
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%99%84%E4%BB%B6"><span class="toc-text">题目附件</span></a></li></ol>
+      </div>
+    </article>
   
   
   <article class="card card-content categories-widget">
@@ -397,65 +540,21 @@
   </article>
   
   
-    <article class="card card-content widescreen-archive archive-widget">
-      <div class="archive-card">
-  <div class="archive-card-header">
-    <i 
-      class="iconfont icon-wodebaobiao" 
-      style="padding-right: 2px;">
-    </i>归档
-  </div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a 
-        href="/archives/2022" 
-        class="archive-card-list-item">
-        2022
-        <span class="archive-card-list-item-badge">7</span>
-      </a>
-    
-  </div>
-</div>
-    </article>
-  
 </div>
             </aside>
             <aside class="right-column">
               <div class="sticky-widescreen">
   
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%99%84%E4%BB%B6"><span class="toc-text">题目附件</span></a></li></ol>
+    </article>
   
   
   <article class="card card-content">
@@ -492,60 +591,6 @@
 </div>
   </article>
   
-  
-    <article class="card card-content">
-      <div class="archive-card">
-  <div class="archive-card-header">
-    <i 
-      class="iconfont icon-wodebaobiao" 
-      style="padding-right: 2px;">
-    </i>归档
-  </div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a 
-        href="/archives/2022" 
-        class="archive-card-list-item">
-        2022
-        <span class="archive-card-list-item-badge">7</span>
-      </a>
-    
-  </div>
-</div>
-    </article>
   
 </div>
             </aside>
@@ -648,6 +693,36 @@
 </a> 
      
      
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
      
      
     <script src="/js/main.js"></script> 
