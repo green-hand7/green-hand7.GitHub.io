@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/img/1.jpg">
-  <title>数据包扩展</title>
+  <title>DNS</title>
   
     
       <meta 
         property="og:title" 
-        content="数据包扩展">
+        content="DNS">
     
     
       <meta 
         property="og:url" 
-        content="http://example.com/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/index.html">
+        content="http://example.com/2022/09/25/DNS/index.html">
     
     
       <meta 
@@ -42,10 +42,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2022-09-23">
+        content="2022-09-25">
       <meta 
         property="og:article:modified_time" 
-        content="2022-09-23">
+        content="2022-09-25">
       <meta 
         property="og:article:author" 
         content="菜鸡の博客">
@@ -53,7 +53,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="web">
+            content="linux">
         
       
     
@@ -259,30 +259,30 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      数据包扩展
+      DNS
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-09-23T15:31:37.000Z">
+    <time datetime="2022-09-25T10:26:37.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2022-09-23</span>
+      <span>2022-09-25</span>
     </time>
     
       <span class="dot"></span>
       
         <a 
-          href="/categories/web/" 
+          href="/categories/linux/" 
           class="post-meta-link">
-          web
+          linux
         </a>
       
     
     
       <span class="dot"></span>
-      <span>1.3k 字</span>
+      <span>964 字</span>
     
   </div>
   
@@ -297,9 +297,9 @@
         
           
           <a 
-            href="/tags/web/" 
+            href="/tags/linux/" 
             class="post-meta-link">
-            web
+            linux
           </a>
         
       </div>
@@ -309,33 +309,51 @@
   <div 
     id="section" 
     class="post-content">
-    <h3 id="https-amp-http"><a href="#https-amp-http" class="headerlink" title="https&amp;http"></a>https&amp;http</h3><p><img src="/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/1.png" alt="http" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/1.png" class="lozad post-image"><br><img src="/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/2.png" alt="https" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/2.png" class="lozad post-image"></p>
-<ul>
-<li>HTTPS协议需要到CA申请证书，一般免费的证书很少，需要缴费。<br> HTTP协议运行在tcp之上，所有传输的内容都是明文，HTTPS运行在SSL&#x2F;TLS之上，SSL&#x2F;TLS运行在TCP之上，所有传输的内容都经过加密的。</li>
-<li>HTTP和HTTPS使用的是完全不同的链接方式，用的端口也不一样，前者是80，后者是443</li>
-<li>HTTPS可以有效的防止运营商劫持，解决了防劫持的一个大问题<br>Request请求数据包数据格式</li>
-</ul>
-<p><code>GET / HTTP/1.1 Host: www.baidu.com Cache-Control: max-age=0 Connection: keep-alive Upgrade-Insecure-Requests: 1 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9 Accept-Encoding: gzip, deflate, br Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6</code><br>Form Data</p>
-<ul>
-<li>name&#x3D;name&amp;age&#x3D;11<br>请求行</li>
-<li>请求行有三个标记组成：请求方法、请求URL和HTTP版本，他们用空格分享。</li>
-<li>列如：GET &#x2F;index.html HTTP&#x2F;1.1</li>
-</ul>
-<p><code>HTTP 规划定义了8种可能的请求方法： GET：检索URL中标识支援的一个简单请求 HEAD：与GET方法相同，服务器只返回状态行和头标，并不返回请求文档 POST：服务器接受被写入客户端输出流中的数据的请求 PUT：服务器保存请求数据作为指定URL新内容的请求 DELETE：服务器删除URL中命令的资源的请求 OPTIONS:关于服务器支持的请求方法信息的请求 TRACE：web服务器反馈HTTP请求和其头标的请求 CONNECT：已文档化，但当前未实现的一个方法，预留做隧道处理</code><br>请求头</p>
-<p><code>有关键字/值对组成，每行一对，关键字和值用冒号分享。请求头标通知服务器腾于客户端的功能和表示 HOST：主机或域名地址 Accept：只浏览器或其他客户可以接受的MIME文件格式。Servlet可以根据它判断并返回适当的文件格式 User-Agent：是客户浏览器名称 Host:对应网址url中的web名称和端口号 Accept-Language:指出浏览器可以接受的语言种类，如en或en-us，指英语。 Connection:用来告诉服务器是否可以维持固定的HTTP链接。http是无连接，HTTP/1.1使用Keep-Alive为默认值，这样，当浏览器需要多个文件时（比如一个HTTP文件或相关的图形文件），不需要每次都建立链接 Cookie：浏览器用这个属性向服务器发送Cookie。 Cookie是在浏览器中寄存的小型数据体，它可以记载和服务器相关的用户信息，也可以用来实现会话功能 Referer ： 表 明 产 生 请 求 的 网 页 URL 。 如 比 从 网 页 /icconcept/index.jsp 中 点 击 一 个 链 接 到 网 页/icwork/search ， 在 向 服 务 器 发 送 的 GET/icwork/search 中 的 请 求 中 ， Referer 是http://hostname:8080/icconcept/index.jsp。这个属性可以用来跟踪 Web 请求是从什么网站来的。 Content-Type：用来表名 request 的内容类型。可以用 HttpServletRequest getContentType()方法取得。 Accept-Charset：指出浏览器可以接受的字符编码。英文浏览器的默认值是 ISO-8859-1. Accept-Encoding：指出浏览器可以接受的编码方式。编码方式不同于文件格式，它是为了压缩文件并加 速文件传递速度。浏览器在接收到 Web 响应之后先解码，然后再检查文件格式。</code></p>
-<h4 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h4><ul>
-<li>最后一个请求头标之后时空行，发送回车符和退行，通知服务器以下不在有头标</li>
-</ul>
-<h4 id="请求数据"><a href="#请求数据" class="headerlink" title="请求数据"></a>请求数据</h4><ul>
-<li>使用POST传送，最常使用的是Content-type和Content-Length头标</li>
-</ul>
-<h4 id="Response返回数据包数据格式"><a href="#Response返回数据包数据格式" class="headerlink" title="Response返回数据包数据格式"></a>Response返回数据包数据格式</h4><p>Response请求数据包数据格式</p>
-<p><code>一个响应由四个部分组成；状态行、响应头标、空行、响应数据 1.状态行：协议版本、数字形式的状态代码描述，个元素之间以空格分隔 2.响应头标：包含服务器类型、日期、长度、内容类型等 3.空行：响应头行与响应体之间用空行隔开 4.响应数据：浏览器会将实体内容中的数据取出来，生成相应的页面</code></p>
-<h4 id="HTTP响应码"><a href="#HTTP响应码" class="headerlink" title="HTTP响应码"></a>HTTP响应码</h4><p>&#96;&#96;&#96;1XX:信息，请求收到，继续处理<br>2XX:成功，行为被成功的接受、理解和采纳<br>3XX:重定向，为了完成请求，必须进一步执行的动作<br>4XX:客户端错误<br>5XX:服务器错</p>
-<p>200  存在文件<br>403  存在文件夹<br>3xx  均可你存在<br>404  不存在文件及文件夹<br>500  均可能存在 </p>
-<h2 id="响应头标"><a href="#响应头标" class="headerlink" title="响应头标"></a>响应头标</h2><p>像请求头标一样，他们指出服务器的功能，标识出响应数据的细节</p>
-<h2 id="空行-1"><a href="#空行-1" class="headerlink" title="空行"></a>空行</h2><p>最后一个响应头标之后是一个空行，发送回车符和退行，表明服务器以下不在有头</p>
-<h2 id="响应数据"><a href="#响应数据" class="headerlink" title="响应数据"></a>响应数据</h2><p>HTTP文档和图像等，也就是html本身&#96;&#96;&#96;</p>
+    <p>安装dns</p>
+<p>安装bind软件包</p>
+<pre class="highlight"><span class="line">[root@localhost ~]# yum -y install bind</span><br><span class="line">CentOS-8 - AppStream                                   1.0 kB/s | 4.3 kB     00:04    </span><br><span class="line">CentOS-8 - Base                                        7.2 kB/s | 3.9 kB     00:00    </span><br><span class="line">CentOS-8 - Extras                                      1.0 kB/s | 1.5 kB     00:01 </span><br></pre>
+
+<p>配置正向解析</p>
+<p>1.查看需要修改的配置文件所在路径</p>
+<pre class="highlight"><span class="line">[root@localhost ~]# rpm -qc bind   查询bind软件配置文件所在路径</span><br><span class="line">/etc/logrotate.d/named</span><br><span class="line">/etc/named.conf    配置主文件</span><br><span class="line">/etc/named.rfc1912.zones   区域配置文件</span><br><span class="line">/etc/named.root.key </span><br><span class="line">/etc/rndc.conf</span><br><span class="line">/etc/rndc.key</span><br><span class="line">/etc/sysconfig/named</span><br><span class="line">/var/named/named.ca</span><br><span class="line">/var/named/named.empty</span><br><span class="line">/var/named/named.localhost  区域数据配置文件</span><br><span class="line">/var/named/named.loopback</span><br></pre>
+
+<p>修改组配置文件 vim &#x2F;etc&#x2F;named.conf</p>
+<pre class="highlight"><span class="line">options &#123;</span><br><span class="line">        listen-on port 53 &#123; 127.0.0.1; &#125;; //监听53端口，ip地址使用提供服务的本地ip，也可用any表示所有</span><br><span class="line">        listen-on-v6 port 53 &#123; ::1; &#125;; //ipv6形如果不使用，可以注释或者删除</span><br><span class="line">        directory       &quot;/var/named&quot;;  区域数据文件的默认存放位置</span><br><span class="line">        dump-file       &quot;/var/named/data/cache_dump.db&quot;;  域名缓存数据库文件的位置</span><br><span class="line">        statistics-file &quot;/var/named/data/named_stats.txt&quot;;状态统计文件的位置</span><br><span class="line">        memstatistics-file &quot;/var/named/data/named_mem_stats.txt&quot;;内存统计文件的位置</span><br><span class="line">        secroots-file   &quot;/var/named/data/named.secroots&quot;;</span><br><span class="line">        recursing-file  &quot;/var/named/data/named.recursing&quot;;</span><br><span class="line">        allow-query     &#123; localhost; &#125;;允许使用本DNS解析服务的网段，可用any表示所有</span><br></pre>
+
+<pre class="highlight"><span class="line">zone &quot;.&quot; IN &#123;  正向解析‘.’跟区域</span><br><span class="line">        type hint; 类型为根区域</span><br><span class="line">        file &quot;named.ca&quot;; 区域文件类型为named.ca</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">include &quot;/etc/named.rfc1912.zones&quot;;包含区域配置文件里所有配置</span><br><span class="line">include &quot;/etc/named.root.key&quot;;</span><br></pre>
+
+<p>区域配置文件，添加正向区域配置vim &#x2F;etc&#x2F;named.rfc1912.zones</p>
+<pre class="highlight"><span class="line">&#125;;</span><br><span class="line">zone &quot;zcq.com&quot; IN &#123;   正向解析zcq.com区域</span><br><span class="line">        type master;  类型为主区域</span><br><span class="line">        file &quot;zcq.com.zone&quot;; 指定区域数据文件为zcq.com.znoe</span><br><span class="line">        allow-update &#123; none; &#125;;</span><br><span class="line">&#125;;</span><br></pre>
+
+<p>配置正向区域数据文件</p>
+<pre class="highlight"><span class="line">[root@localhost ~]# cd /var/named/</span><br><span class="line">[root@localhost named]# cp -a named.localhost zcq.com.zone</span><br><span class="line">[root@localhost named]# vim zcq.com.zone</span><br></pre>
+
+<pre class="highlight"><span class="line">TTL 1D  有效解析记录生命周期</span><br><span class="line">@       IN SOA  zcq.com. dns.zcq.com. ( 当前的DNS区域名</span><br><span class="line">                                        0       ; serial</span><br><span class="line">                                        1D      ; refresh</span><br><span class="line">                                        1H      ; retry</span><br><span class="line">                                        1W      ; expire</span><br><span class="line">                                        3H )    ; minimum</span><br><span class="line">        NS      dns.zcq.com. 当前区域的DNS服务器名称</span><br><span class="line">        A       192.168.207.153 主机ip地址</span><br><span class="line">        AAAA    ::1</span><br><span class="line">www     A       192.168.63.10  </span><br><span class="line">ftp     A       192.168.63.20</span><br><span class="line">dns     A       192.168.63.10</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+
+<p>修改vim &#x2F;etc&#x2F;resolv.conf 配置文件</p>
+<pre class="highlight"><span class="line"># Generated by NetworkManager</span><br><span class="line">search localdomain</span><br><span class="line">nameserver 192.168.207.153修改网卡地址</span><br></pre>
+
+<p>systemctl start named重启系统bind</p>
+<p>nslookup <a target="_blank" rel="noopener" href="http://www.zcq.com/">www.zcq.com</a> 进行解析</p>
+<pre class="highlight"><span class="line">[root@localhost named]# nslookup www.zcq.com</span><br><span class="line">Server:		192.168.207.153</span><br><span class="line">Address:	192.168.207.153#53</span><br><span class="line"></span><br><span class="line">Non-authoritative answer:</span><br><span class="line">Name:	www.zcq.com   已经解析成功了</span><br><span class="line">Address: 199.59.242.153</span><br></pre>
+
+<p>反向解析</p>
+<p>vim &#x2F;etc&#x2F;named.rfc1912.zones</p>
+<pre class="highlight"><span class="line">zone &quot;242.59.199.in-addr.arpa&quot; IN &#123;主机地址 </span><br><span class="line">        type master;</span><br><span class="line">        file &quot;zcq.com.zone.local&quot;;指定区域文件zcq.com.zone.local</span><br><span class="line">        allow-update &#123; none; &#125;;</span><br><span class="line">&#125;;</span><br></pre>
+
+<pre class="highlight"><span class="line">cd /var/named</span><br><span class="line">cp -a named.loopback zcq.com.zone.local</span><br><span class="line">ll</span><br></pre>
+
+<pre class="highlight"><span class="line">$TTL 1D</span><br><span class="line">@       IN SOA  zcq.com. dns.zcq.com. (</span><br><span class="line">                                        0       ; serial</span><br><span class="line">                                        1D      ; refresh</span><br><span class="line">                                        1H      ; retry</span><br><span class="line">                                        1W      ; expire</span><br><span class="line">                                        3H )    ; minimum</span><br><span class="line">        NS      dns.zcq.com</span><br><span class="line">        A       192.168.207.2</span><br><span class="line">        AAAA    ::1</span><br><span class="line">10   IN PTR     www.zcq.com</span><br><span class="line">20   IN PTR     ftp.zcq.com</span><br><span class="line">30   IN PTR     dns.zcq.com</span><br><span class="line"></span><br></pre>
+
+<pre class="highlight"><span class="line">TTL 1D</span><br><span class="line">@       IN SOA  zcq.com. root.zcq.com. (</span><br><span class="line">                                        0       ; serial</span><br><span class="line">                                        1D      ; refresh</span><br><span class="line">                                        1H      ; retry</span><br><span class="line">                                        1W      ; expire</span><br><span class="line">                                        3H )    ; minimum</span><br><span class="line">        NS      zcq.com</span><br><span class="line">        A       192.168.207.2</span><br><span class="line">        AAAA    ::1</span><br><span class="line">10   IN PTR     www.zcq.com</span><br><span class="line">20   IN PTR     ftp.zcq.com</span><br><span class="line">30   IN PTR     dns.zcq.com</span><br><span class="line">~                                                                                                    </span><br><span class="line">~                            </span><br></pre>
+
+<p>配置dns静态地址</p>
+<pre class="highlight"><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-ens33 </span><br></pre>
+
+<pre class="highlight"><span class="line">TYPE=&quot;Ethernet&quot;</span><br><span class="line">PROXY_METHOD=&quot;none&quot;</span><br><span class="line">BROWSER_ONLY=&quot;no&quot;</span><br><span class="line">BOOTPROTO=&quot;none&quot;</span><br><span class="line">DEFROUTE=&quot;yes&quot;</span><br><span class="line">IPV4_FAILURE_FATAL=&quot;no&quot;</span><br><span class="line">IPV6INIT=&quot;yes&quot;</span><br><span class="line">IPV6_AUTOCONF=&quot;yes&quot;</span><br><span class="line">IPV6_DEFROUTE=&quot;yes&quot;</span><br><span class="line">IPV6_FAILURE_FATAL=&quot;no&quot;</span><br><span class="line">IPV6_ADDR_GEN_MODE=&quot;stable-privacy&quot;</span><br><span class="line">NAME=&quot;ens33&quot;</span><br><span class="line">UUID=&quot;6129691a-151a-4512-a0f9-6c0393a260a2&quot;</span><br><span class="line">DEVICE=&quot;ens33&quot;</span><br><span class="line">ONBOOT=&quot;yes&quot;</span><br><span class="line">IPADDR=192.168.207.134</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.207.254</span><br><span class="line">DNS1=192.168.207.134</span><br></pre>
+
+<pre class="highlight"><span class="line">2: ens33: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000</span><br><span class="line">    link/ether 00:0c:29:07:ef:31 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 192.168.207.134/24 brd 192.168.207.255 scope global noprefixroute ens33</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">这是我电脑的IP的地址</span><br></pre>
+
 
   </div>
   <div>
@@ -355,8 +373,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="http://example.com/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/">
-            http://example.com/2022/09/23/%E6%95%B0%E6%8D%AE%E5%8C%85%E6%89%A9%E5%B1%95/
+            href="http://example.com/2022/09/25/DNS/">
+            http://example.com/2022/09/25/DNS/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
@@ -366,29 +384,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2022/09/23/%E5%8A%A0%E5%AF%86-cdn-%E4%BF%A1%E6%81%AF-DNS/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">加密&amp;cdn&amp;信息&amp;DNS </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2022/09/23/%E5%9E%8B%E5%8F%B7%E4%B8%8D%E5%A5%BD/" 
+        href="/2022/09/25/123/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">型号不好 </div>
+            <div class="nav-title">123 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -442,7 +446,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#https-amp-http"><span class="toc-text">https&amp;http</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE"><span class="toc-text">请求数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Response%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%8C%85%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-text">Response返回数据包数据格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E5%93%8D%E5%BA%94%E7%A0%81"><span class="toc-text">HTTP响应码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4%E6%A0%87"><span class="toc-text">响应头标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C-1"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE"><span class="toc-text">响应数据</span></a>
+
 </div></main>
             <aside class="left-column">
               
@@ -490,7 +494,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#https-amp-http"><span class="toc-text">https&amp;http</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE"><span class="toc-text">请求数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Response%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%8C%85%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-text">Response返回数据包数据格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E5%93%8D%E5%BA%94%E7%A0%81"><span class="toc-text">HTTP响应码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4%E6%A0%87"><span class="toc-text">响应头标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C-1"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE"><span class="toc-text">响应数据</span></a>
+
       </div>
     </article>
   
@@ -615,7 +619,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#https-amp-http"><span class="toc-text">https&amp;http</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE"><span class="toc-text">请求数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Response%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%8C%85%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-text">Response返回数据包数据格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E5%93%8D%E5%BA%94%E7%A0%81"><span class="toc-text">HTTP响应码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4%E6%A0%87"><span class="toc-text">响应头标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C-1"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE"><span class="toc-text">响应数据</span></a>
+
     </article>
   
   
