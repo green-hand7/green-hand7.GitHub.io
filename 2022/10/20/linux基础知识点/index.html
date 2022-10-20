@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="Hexo">
+  <link 
+    rel="icon" 
+    href="/img/1.jpg">
+  <title>linux基础知识点</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="linux基础知识点">
+    
+    
+      <meta 
+        property="og:url" 
+        content="http://example.com/2022/10/20/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/img/1.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-10-20">
+      <meta 
+        property="og:article:modified_time" 
+        content="2022-10-20">
+      <meta 
+        property="og:article:author" 
+        content="菜鸡の博客">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="Linux">
+        
+      
+    
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+    
+    <link rel="prefetch" href="//unpkg.com/valine/dist/Valine.min.js" as="script">
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="/img/1.jpg" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">菜鸡の博客</span>
+    </span>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友情链接
+        
+      </a>
+    
+    <a 
+      class="navbar-menu-item darknavbar" 
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </a>
+    <a 
+      class="navbar-menu-item searchnavbar" 
+      id="search">
+      <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i>
+    </a>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <main class="main-column">
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      linux基础知识点
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-10-20T02:15:22.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-10-20</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/Linux/" 
+          class="post-meta-link">
+          Linux
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>5k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/Linux/" 
+            class="post-meta-link">
+            Linux
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h5 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a><strong>磁盘分区</strong></h5><p>无特别需求时:</p>
+<p>&#x2F;boot  200m</p>
+<p>&#x2F;swap  内存两倍，一般8g即可</p>
+<p>lsblk -f   #以相视状况列出所有块设备 （加-f参数后可显示 UUID和分区格式）</p>
+<p>df -h      #查看分区情况，容量大小，使用情况，挂载点等</p>
+<p>fdisj -l   # 查看磁盘分区表信息2</p>
+<p>LINUX中存储设备必须挂载后才能使用</p>
+<p>window：分区+格式化</p>
+<p>Linux：分区+格式化+挂载，存储设备必须挂载后才能使用（硬盘、光盘、U盘）</p>
+<pre class="highlight"><span class="line">mount命令：mount 空格 /dev/sda1 空格 /mnt/file</span><br></pre>
+
+<h4 id="系统目录结构"><a href="#系统目录结构" class="headerlink" title="系统目录结构"></a><strong>系统目录结构</strong></h4><p>Linux与windows区别</p>
+<p>windows系统不同于Linux，Linux没有c盘、D盘、E盘这些盘符，只有一个根目录（&#x2F;），所有的文件（资源）都存储在以根目录（&#x2F;）为树根目录结构中</p>
+<p><img src="/2022/10/20/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/1.png" alt="文件系统机构" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/10/20/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/1.png" class="lozad post-image"></p>
+<p>&#x2F;bin 存放常用的命令文件</p>
+<p>&#x2F;boot  存放用于系统启动的内核文件和引导装载程序文件</p>
+<p>&#x2F;dev  存放设备文件</p>
+<p>&#x2F;etc  存放系统管理所需的配置文件</p>
+<p>&#x2F;lib  存放着系统基本的动态链接共享库，其作用类似于windows里的DLL文件 </p>
+<p>&#x2F;media  linux自动识别一些设备，如U盘，光驱，等，该目录为其默认挂载点</p>
+<p>&#x2F;mnt  某些设备的挂载点，用于可以在此挂载设备</p>
+<p>&#x2F;opt  用于放置第三方软件</p>
+<p>&#x2F;proc 虚拟文件系统，这是系统自动产生的映射，存储当钱内核运行状态</p>
+<p>&#x2F;sbin 存放系统管理员使用的命令文件</p>
+<p>&#x2F;usr 用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录</p>
+<p>&#x2F;var 存放经常变化的内容，如系统日志</p>
+<p>&#x2F;tmp 存放一些临时文件</p>
+<h4 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h4><h5 id="文件命名规则"><a href="#文件命名规则" class="headerlink" title="文件命名规则"></a><strong>文件命名规则</strong></h5><h6 id="1）-mkdir创建目录"><a href="#1）-mkdir创建目录" class="headerlink" title="1） mkdir创建目录"></a><strong>1） mkdir创建目录</strong></h6><p>命令： mkdir (make directory，创建目录) </p>
+<p>作用：创建目录 语法：#mkdir [参数选项] 路径（包含目录名） 常见参数：</p>
+<p> -p：递归创建所有目录,如果想创建多层不存在的路径，可以使用-p参数实现。</p>
+<p>-p表示parents，父级的意识</p>
+<pre class="highlight"><span class="line">用法一：mkdir 不加参数，路径（需要包含目录名称）</span><br><span class="line">示例代码：</span><br><span class="line">#mkdir /usr/local/nginx</span><br><span class="line">含义：在/usr/local目录下，创建一个文件夹名为nginx</span><br><span class="line">特别注意：mkdir命令默认不能隔级创建目录，必须要求要创建的目录所在的目录一定要存</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：mkdir 加-p参数，路径（需要包含目录名称）</span><br><span class="line">示例代码：</span><br><span class="line">#mkdir -p /usr/local/itheima/tomcat</span><br><span class="line">含义：在/usr/local目录下，同时创建itheima文件夹和itheima下的子文件夹tomcat</span><br></pre>
+
+<pre class="highlight"><span class="line">用法三：mkdir 路径1 路径2 路径3</span><br><span class="line">示例代码：</span><br><span class="line">#mkdir /usr/local/a /usr/local/b /usr/local/c</span><br><span class="line">含义：在/usr/local目录下，同时创建a,b,c文件夹</span><br></pre>
+
+<h6 id="2）删除目录"><a href="#2）删除目录" class="headerlink" title="2）删除目录"></a><strong>2）删除目录</strong></h6><p>命令： rmdir（remove directory缩写） </p>
+<p>作用：删除空目录 语法：#rmdir [参数选项] 路径（包含目录名）</p>
+<p>常见参数： -p：递归删除所有空目录</p>
+<pre class="highlight"><span class="line">用法一：rmdir 不加参数，路径（需要包含目录名称）</span><br><span class="line">示例代码：</span><br><span class="line">#rmdir /usr/local/nginx</span><br><span class="line">含义：删除/usr/local下的空目录nginx</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：rmdir 路径1 路径2 路径3</span><br><span class="line">示例代码：</span><br><span class="line">#rmdir /usr/local/a /usr/local/b /usr/local/c</span><br><span class="line">含义：同时删除a,b,c三个空目录</span><br></pre>
+
+<pre class="highlight"><span class="line">用法三：rmdir -p 路径（需要包含目录名称）</span><br><span class="line">示例代码：</span><br><span class="line">#rmdir -p itheima/tomcat</span><br><span class="line">含义：递归删除目录，删除tomcat和itheima目录</span><br><span class="line">首先删除子目录，删除成功后，删除上级目录，直至结束。</span><br></pre>
+
+<h6 id="3-创建文件"><a href="#3-创建文件" class="headerlink" title="3) 创建文件"></a><strong>3) 创建文件</strong></h6><p>命令：touch </p>
+<p>作用：创建文件 </p>
+<p>语法：# touch 文件路径 [文件路径2 文件路径3 …]</p>
+<pre class="highlight"><span class="line">用法一：touch 路径（包含文件名）</span><br><span class="line">示例代码：</span><br><span class="line">#touch readme.txt</span><br><span class="line">含义：在当前路径下创建一个文件 readme.txt</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：touch 路径1（包含文件名） 路径2（包含文件名） 路径3（包含文件名）</span><br><span class="line">示例代码：</span><br><span class="line">#touch 1.txt 2.txt 3.txt</span><br><span class="line">含义：在当前路径下创建1.txt 2.txt 3.txt三个文件</span><br></pre>
+
+<pre class="highlight"><span class="line">用法三（了解）：touch 路径1（包含文件名）&#123;1..n&#125;</span><br><span class="line">示例代码：</span><br><span class="line">#touch &#123;1..5&#125;.txt</span><br><span class="line">含义：在当前路径下创建1.txt 2.txt 3.txt 4.txt 5.txt三个文件</span><br><span class="line">其中</span><br><span class="line">1表示开始的数字</span><br><span class="line">..表示连续的</span><br><span class="line">5表示结束的数字</span><br></pre>
+
+<h6 id="4-删除文件"><a href="#4-删除文件" class="headerlink" title="4) 删除文件"></a><strong>4) 删除文件</strong></h6><p> 命令：rm（remove缩写） 作用：删除文件或文件夹</p>
+<p> 语法：rm [参数选项] 文件或文件夹 </p>
+<p>选项：-r ：递归删除，主要用于删除目录，可删除指定目录及包含的所有内容，包括所有子目录和文件 -f ：强制删除，不提示任何信息。操作前一定要慎重！！！</p>
+<pre class="highlight"><span class="line">② 删除文件</span><br><span class="line">命令：rm（remove缩写）</span><br><span class="line">作用：删除文件或文件夹</span><br><span class="line">语法：rm [参数选项] 文件或文件夹</span><br><span class="line">选项：-r ：递归删除，主要用于删除目录，可删除指定目录及包含的所有内容，包括所有子目录和文件</span><br><span class="line"> -f ：强制删除，不提示任何信息。操作前一定要慎重！！！</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：rm -r 路径（通常为目录名）</span><br><span class="line">示例代码：</span><br><span class="line">#rm -r itheima</span><br><span class="line">含义：删除当前文件夹下的itheima文件夹及其包含的所有子文件夹/文件</span><br></pre>
+
+<pre class="highlight"><span class="line">用法三：rm -rf 路径（通常为目录名）</span><br><span class="line">示例代码：</span><br><span class="line">#rm -rf itheima</span><br><span class="line">含义：强制删除当前文件夹下的itheima文件夹及其包含的所有子文件夹/文件</span><br></pre>
+
+<p>5 复制操作 </p>
+<p>命令：cp (copy缩写，复制操作)  </p>
+<p>作用：复制文件&#x2F;文件夹到指定的位置</p>
+<p> 语法：#cp [参数选项] 源路径（含文件名） 目标路径（如不指定文件名，则文件名不变） </p>
+<p>常见参数：-r：recursion，递归，用于复制目录</p>
+<pre class="highlight"><span class="line">用法一：cp 源路径 目标路径（不指定文件名）</span><br><span class="line">示例代码：</span><br><span class="line">#cp /root/itheima.txt /usr/local/</span><br><span class="line">含义：将/root目录下的itheima.txt文件拷贝到/usr/local下，文件名不变</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：cp 源路径 目标路径（指定文件名）</span><br><span class="line">示例代码：</span><br><span class="line">#cp /root/itheima.txt /usr/local/heimayunwei.txt</span><br><span class="line">含义：将/root目录下的itheima.txt文件拷贝到/usr/local下，重命名为heimayunwei.txt</span><br></pre>
+
+<pre class="highlight"><span class="line">用法三：cp -r 源路径（包含目录名） 目标路径</span><br><span class="line">示例代码：</span><br><span class="line">#cp -r /root/chuanzhiboke /usr/local/</span><br><span class="line">含义：将/root目录下的chuanzhiboke目录完整拷贝到/usr/local下</span><br></pre>
+
+<h6 id="5-剪切操作"><a href="#5-剪切操作" class="headerlink" title="5)  剪切操作"></a><strong>5)  剪切操作</strong></h6><p>命令：mv （move，移动，剪切）</p>
+<p>作用：可以在不同的目录之间移动文件或目录，也可以对文件和目录进行重命名</p>
+<p>语法：#mv [参数] 源文件 目标路径（不指定文件名）</p>
+<p>mv与cp的区别：<br>☆ mv 与 cp 命令不一样，不管是针对文件还是针对文件夹都不需要加类似 -r 的选项。<br>☆ 默认在移动的过程中文档名称名称是不变的，变的是路径</p>
+<pre class="highlight"><span class="line">用法一：mv 源文件 目标路径（不指定文件名）</span><br><span class="line">示例代码：</span><br><span class="line">#mv readme.txt /usr/local/</span><br><span class="line">含义：将当前目录下的readme.txt文件移动到/usr/local下，文件名不变</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：mv 源目录 目标路径（不指定目录名）</span><br><span class="line">示例代码：</span><br><span class="line">#mv shop /usr/local/</span><br><span class="line">含义：将当前目录下的shop目录移动到/usr/local下，目录名不变</span><br></pre>
+
+<p>命令：mv （move，移动，剪切）<br>语法：#mv [参数] 源文件 目标路径（指定文件名）</p>
+<pre class="highlight"><span class="line">用法三：mv 当前文件名 新文件名</span><br><span class="line">示例代码：</span><br><span class="line">#mv itheima.txt heimacxy.txt</span><br><span class="line">含义：将当前目录下的itheima.txt文件重命名成 heimacxy.txt</span><br><span class="line">前面我们说过，默认情况下文件名称不变，但如果我们指定目标文件名称，就变成了重命名操作。</span><br></pre>
+
+<pre class="highlight"><span class="line">用法四：mv 当前目录名 新目录名</span><br><span class="line">示例代码：</span><br><span class="line">#mv shop shopping</span><br><span class="line">含义：将当前目录下的shop目录重命名成 shopping</span><br></pre>
+
+<h5 id="tar打包压缩与解压缩"><a href="#tar打包压缩与解压缩" class="headerlink" title="tar打包压缩与解压缩"></a>tar打包压缩与解压缩</h5><p>打包，指的是一个文件或目录的集合，而这个集合被存储在一个文件中。归档文件没有经过压缩，占用的空间是 其中所有文件和目录的总和。</p>
+<p> 1.txt 5MB 2.txt 10MB 3.txt 20MB 123.tar 35MB </p>
+<p>压缩文件也是一个文件和目录的集合，且这个集合也被存储在一个文件中，但它们的不同之处在于，压缩文件所 占用的磁盘空间比集合中所有文件大小的总和要小。</p>
+<p> 123.tar.gz 不是35MB，是压缩后的大小。</p>
+<h6 id="1-打包"><a href="#1-打包" class="headerlink" title="1) 打包"></a><strong>1) 打包</strong></h6><p>命令：tar</p>
+<p> 作用：将多个文件打包成一个文件 </p>
+<p>语法：tar 选项 打包文件名 要打包的文件或目录</p>
+<p> 常见参数：</p>
+<p>-c，create 创建的意思 </p>
+<p>-v，显示打包文件过程</p>
+<p> -f，指定打包的文件名，此参数是必须加的。</p>
+<p> -u，update缩写，更新原打包文件中的文件（了解）</p>
+<p> -t，查看打包的文件内容（了解） </p>
+<p>注意： </p>
+<p>在使用 tar 命令指定选项时可以不在选项前面输入“-”。例如，使用“cvf”选项和 “-cvf”起到的作用一样。 使用 tar 命令归档的包通常称为 tar 包（tar 包文件都是以“.tar”结尾的）。</p>
+<pre class="highlight"><span class="line">用法一：tar -cvf 文件名 文件1 文件2 文件3</span><br><span class="line">示例代码：</span><br><span class="line">#tar -cvf abc.tar a.txt b.txt c.txt</span><br><span class="line">含义：将当前目录下的a.txt b.txt c.txt 打包成abc.tar文件，大小是三个文件的总合</span><br><span class="line">重点掌握CVF就可以了</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：tar -uf 现有包文件名 要追加的文件</span><br><span class="line">示例代码：</span><br><span class="line">#tar -uf abc.tar d.txt</span><br><span class="line">含义：将当前目录下的d.txt 追加到abc.tar文件，大小是四个文件的总合</span><br></pre>
+
+<pre class="highlight"><span class="line">用法三：tar -tf 包文件名</span><br><span class="line">示例代码：</span><br><span class="line">#tar -tf abc.tar</span><br><span class="line">含义：查看abc.tar文件内容</span><br></pre>
+
+<h6 id="2-打包并压缩（重点）"><a href="#2-打包并压缩（重点）" class="headerlink" title="2) 打包并压缩（重点）"></a><strong>2) 打包并压缩（重点）</strong></h6><p>Linux下，常用的压缩工具有很多，比如 gzip、zip、bzip2、xz 等 </p>
+<p>tar 在打包的时候，是支持压缩的，gzip 、bzip2 、xz 压缩工具都可以在 tar 打包文件中使用。 命令：tar </p>
+<p>作用：将多个文件打包并压缩成一个文件，其实就是tar命令的三个压缩参数</p>
+<p>语法：tar 选项 打包文件名 要压缩的文件或目录&#x3D;&#x3D; </p>
+<p>常见参数：-z，压缩为.gz格式 </p>
+<p>​                    -j，压缩为.bz2格式 </p>
+<p>​                    -J，压缩为.xz格式 </p>
+<p>​                     -c，create 创建的意思</p>
+<p>​                      -x，解压缩 </p>
+<p>​                      -v，显示打包文件过程</p>
+<p>​                        -f，file指定打包的文件名，此参数是必须加的。</p>
+<p>​                        -u，update缩写，更新原打包文件中的文件（了解） </p>
+<p>​                        -t，查看打包的文件内容（了解）</p>
+<pre class="highlight"><span class="line">用法以一：tar -jcvf 文件名 文件1 文件2 文件3</span><br><span class="line">示例代码：</span><br><span class="line">#tar -jcvf abc.tar.bz2 a.txt b.txt c.txt</span><br><span class="line">含义：将当前目录下的a.txt b.txt c.txt 使用bz2压缩打包成abc.tar.bz2文件，是压缩后的大小</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：tar -Jcvf 文件名 文件1 文件2 文件3</span><br><span class="line">示例代码：</span><br><span class="line">#tar -Jcvf abc.tar.xz a.txt b.txt c.txt</span><br><span class="line">含义：将当前目录下的a.txt b.txt c.txt 使用xz压缩打包成abc.tar.xz文件，是压缩后的大小</span><br></pre>
+
+<p>注意：bz2,gzip,xz三种工具的压缩比不同，实际工作中最常用的是gzip，换句话说，大家最常见到的压缩打包文件 是 .tar.gz</p>
+<h6 id="3-解压"><a href="#3-解压" class="headerlink" title="3) 解压"></a><strong>3) 解压</strong></h6><p>解压的时候，把压缩命令中的 c 换成 x 即可</p>
+<pre class="highlight"><span class="line">用法一：tar -zxvf 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#tar -zxvf abc.tar.gz</span><br><span class="line">含义：将abc.tar.gz文件，解压缩</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：tar -jxvf 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#tar -jxvf abc.tar.bz2</span><br><span class="line">含义：将abc.tar.bz2文件，解压缩</span><br></pre>
+
+<pre class="highlight"><span class="line">用法三：tar -Jxvf 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#tar -Jxvf abc.tar.xz</span><br><span class="line">含义：将abc.tar.xz文件，解压缩</span><br></pre>
+
+<pre class="highlight"><span class="line">用法四：tar -xvf 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#tar -xvf abc.tar.xz</span><br><span class="line">含义：系统将自动识别压缩格式，并自动选择相应工具，解压缩</span><br></pre>
+
+<h5 id="zip压缩与解压缩（了解）"><a href="#zip压缩与解压缩（了解）" class="headerlink" title="zip压缩与解压缩（了解）"></a>zip压缩与解压缩（了解）</h5><h6 id="1-zip压缩"><a href="#1-zip压缩" class="headerlink" title="1) zip压缩"></a>1) zip压缩</h6><p> 命令：zip</p>
+<p> 作用：兼容类unix与windows，可以压缩多个文件或目录</p>
+<p>语法：# zip [参数] 压缩后的文件 需要压缩的文件(可以是多个文件) </p>
+<p>参数选项：-r 递归压缩（压缩文件夹）</p>
+<pre class="highlight"><span class="line">用法一：zip 压缩后的文件名 要压缩的文件（一个或多个）</span><br><span class="line">示例代码：</span><br><span class="line">#zip 1.zip 1.txt</span><br><span class="line">含义：将1.txt 压缩成1.zip</span><br><span class="line">#zip 1dao4.zip 1.txt 2.txt 3.txt 4.txt</span><br><span class="line">含义：将1.txt,2.txt,3.txt,4.txt四个文件压缩成一个1dao4.zip文件</span><br></pre>
+
+<h6 id="2-unzip解压缩"><a href="#2-unzip解压缩" class="headerlink" title="2) unzip解压缩"></a>2) unzip解压缩</h6><p>命令：unzip </p>
+<p>作用：解压文件 </p>
+<p>语法：unzip 要解压的压缩文件 [-d] 解压目录</p>
+<p> 选项：-d，directory缩写，代表解压文件到指定目录下 </p>
+<p>用法一：解压到当前目录</p>
+<h5 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h5><h6 id="1-cat查看及合并"><a href="#1-cat查看及合并" class="headerlink" title="1) cat查看及合并"></a><strong>1) cat查看及合并</strong></h6><p> 命令：cat 作用：查看文件内容</p>
+<p> 语法：#cat 文件名称</p>
+<p>​            #cat 文件1 文件2 &gt; 文件3</p>
+<pre class="highlight"><span class="line">用法一：cat 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#cat 1.txt</span><br><span class="line">含义：显示1.txt文件的内容</span><br><span class="line">特别注意：cat 命令用于查看文件内容时，不论文件内容有多少，都会一次性显示。如果文件非常大，那么文件开头的</span><br><span class="line">内容就看不到了。cat 命令适合查看不太大的文件。</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：cat 文件1 文件2 &gt; 文件3</span><br><span class="line">示例代码：</span><br><span class="line">#cat 1.txt 2.txt &gt; 3.txt</span><br><span class="line">含义：将1.txt和2.txt文件内容合并后，输出到3.txt</span><br></pre>
+
+<p>2)more分屏显示文件</p>
+<p> 命令：more </p>
+<p>作用：分屏查看文件</p>
+<p> 语法：#more 文件名 </p>
+<p>流程：more在读取文件时，默认已经加载文件的全部内容。</p>
+<pre class="highlight"><span class="line">用法一：more 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#more /var/log/boot.log</span><br><span class="line">含义：分页显示/var/log/boot.log文件的内容</span><br></pre>
+
+<h6 id="2-less分屏显示文件"><a href="#2-less分屏显示文件" class="headerlink" title="2)less分屏显示文件"></a><strong>2)less分屏显示文件</strong></h6><p> 命令：less </p>
+<p>作用：分屏查看文件 </p>
+<p>语法：# less 文件名</p>
+<p> 流程：不是加载整个文件，而是一点一点进行加载，相对而言，读取大文件时，效率比较高。 示例代码：使用less命令查看&#x2F;root&#x2F;install.log的文件内容</p>
+<pre class="highlight"><span class="line">用法一：less 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#less /var/log/boot.log</span><br><span class="line">含义：分页显示/var/log/boot.log文件的内容</span><br></pre>
+
+<p>cat,more,less三者的对比</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>cat</th>
+<th>more</th>
+<th>less</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>作用</td>
+<td>显示小文件内容</td>
+<td>显示大文件内容</td>
+<td>显示大文件内容</td>
+</tr>
+<tr>
+<td>交互命令</td>
+<td>无</td>
+<td>有</td>
+<td>有</td>
+</tr>
+<tr>
+<td>上下键翻行</td>
+<td>无</td>
+<td>无</td>
+<td>有</td>
+</tr>
+</tbody></table>
+<h6 id="3-head显示文件开头"><a href="#3-head显示文件开头" class="headerlink" title="3)head显示文件开头"></a><strong>3)head显示文件开头</strong></h6><p>命令：head </p>
+<p>作用：查看一个文件的前n 行，如果不指定n，则默认显示前10 行。</p>
+<p> 语法：#head [参数选项] 文件名 常见参数：-n 表示显示前n行的内容，n等于行数</p>
+<pre class="highlight"><span class="line">用法一：head 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#head /var/log/boot.log</span><br><span class="line">含义：显示/var/log/boot.log文件的内容，默认为前10行</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：head -n 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#head -3 /var/log/boot.log</span><br><span class="line">含义：显示/var/log/boot.log文件的前3行内容</span><br></pre>
+
+<h6 id="4-tail显示文件结尾"><a href="#4-tail显示文件结尾" class="headerlink" title="4)tail显示文件结尾"></a><strong>4)tail显示文件结尾</strong></h6><p> 命令：tail </p>
+<p>作用：查看一个文件的最后n 行，如果n 不指定默认显示最后10 行 </p>
+<p>语法：# tail -n 文件路径 【n 表示数字】</p>
+<p> 常见参数：-n 显示最后n行的内容，n等于行数</p>
+<p> -f 输出文件变化后新增加的数据</p>
+<pre class="highlight"><span class="line">用法一：tail 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#tail /var/log/boot.log</span><br><span class="line">含义：显示/var/log/boot.log文件的内容，默认为最后10行</span><br></pre>
+
+<pre class="highlight"><span class="line">用法二：tail -n 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#tail -5 /var/log/boot.log</span><br><span class="line">含义：显示/var/log/boot.log文件的最后5行内容</span><br><span class="line">tail -n 文件名</span><br><span class="line">示例代码：</span><br><span class="line">#tail -5 /var/log/boot.log</span><br><span class="line">含义：显示/var/log/boot.log文件的最后5行内容</span><br></pre>
+
+<h4 id="用户与用户组"><a href="#用户与用户组" class="headerlink" title="用户与用户组"></a><strong>用户与用户组</strong></h4><p>注意三个文件： </p>
+<p>☆ &#x2F;etc&#x2F;passwd 用户配置文件，存储用户的基本信息 </p>
+<p>☆ &#x2F;etc&#x2F;group 存储用户组的信息 </p>
+<p>☆ &#x2F;etc&#x2F;shadow 存储用户的密码信息</p>
+<h6 id="1）添加用户组"><a href="#1）添加用户组" class="headerlink" title="1）添加用户组"></a>1）<strong>添加用户组</strong></h6><p>命令：groupadd </p>
+<p>作用：添加组 </p>
+<p>语法：# groupadd [参数选项 选项值] 用户组名 </p>
+<p>选项：-g：设置用户组ID 数字，如果不指定，则默认从1000 之后递增</p>
+<pre class="highlight"><span class="line">命令：groupadd</span><br><span class="line">作用：添加组</span><br><span class="line">语法：# groupadd [参数选项 选项值] 用户组名</span><br><span class="line">选项：-g：设置用户组ID 数字，如果不指定，则默认从1000 之后递增</span><br></pre>
+
+<p>存储用户组信息的文件：&#x2F;etc&#x2F;group</p>
+<p>结构： </p>
+<pre class="highlight"><span class="line">ks:x:1000:ks</span><br><span class="line">用户组名：密码（占位符）：用户组ID：这个组包含的用户（附属组）</span><br></pre>
+
+<h6 id="2）-用户组修改"><a href="#2）-用户组修改" class="headerlink" title="2） 用户组修改"></a><strong>2） 用户组修改</strong></h6><p>命令：groupmod</p>
+<p> 语法：# groupmod [选项 选项值] 用户组名 </p>
+<p>选项：-g ：gid缩写，设置一个自定义的用户组ID 数字 </p>
+<p>-n ：name缩写，设置新的用户组的名称 </p>
+<p>示例代码：修改hr用户组，将组ID改成1100，将名称改为bjhr</p>
+<pre class="highlight"><span class="line">命令：groupmod</span><br><span class="line">语法：# groupmod [选项 选项值] 用户组名</span><br><span class="line">选项：-g ：gid缩写，设置一个自定义的用户组ID 数字</span><br><span class="line"> -n ：name缩写，设置新的用户组的名称</span><br><span class="line">示例代码：修改hr用户组，将组ID改成1100，将名称改为bjhr</span><br></pre>
+
+<h6 id="3）用户组删除"><a href="#3）用户组删除" class="headerlink" title="3）用户组删除"></a><strong>3）用户组删除</strong></h6><p>命令：groupdel </p>
+<p>语法：# groupdel 用户组名 </p>
+<p>案例：删除bjhr组</p>
+<pre class="highlight"><span class="line">用法一：groupdel 组名</span><br><span class="line">示例代码：</span><br><span class="line">#groupdel bjhr</span><br><span class="line">含义：将bjhr组删除</span><br></pre>
+
+<h5 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a><strong>用户管理</strong></h5><p>用户的管理涉及用户的添加、删除和修改。</p>
+<p> 与用户相关的文件：&#x2F;etc&#x2F;passwd</p>
+<h6 id="1）useradd添加用户"><a href="#1）useradd添加用户" class="headerlink" title="1）useradd添加用户"></a><strong>1）useradd添加用户</strong></h6><p>命令：useradd </p>
+<p>作用：添加用户 </p>
+<p>语法：# useradd [选项 选项的值] … 用户名</p>
+<p> 选项：</p>
+<p>-g：表示指定用户的用户主（主要）组，选项值可以是用户组ID， 也可以是组名 </p>
+<p>-G：表示指定用户的用户附加（额外）组，选项值可以是用户组 ID，也可以是组名 </p>
+<p>-u ：uid，用户的id（用户的标识符），系统默认会从500 &#x2F;或1000 之后按顺序分配uid，如果不想使用系统分配的，可以通过该选项自定义 【类似于腾讯QQ 的自选靓号情况】</p>
+<p> -c：comment，添加注释（选择是否添加） </p>
+<p>-s：指定用户登入后所使用的shell 解释器，默认&#x2F;bin&#x2F;bash【专门的 接待员】，如果不想让其登录，则可以设置为&#x2F;sbin&#x2F;nologin （重要） </p>
+<p>-d：指定用户登入时的启始目录（家目录位置） </p>
+<p>-n：取消建立以用户名称为名的群组（了解）</p>
+<p> 当我新建一个账户叫user01, 同时，系统会自动建立一个组也叫 user01</p>
+<pre class="highlight"><span class="line">用法一：useradd 用户名</span><br><span class="line">示例代码：</span><br><span class="line">#useradd zhangsan</span><br><span class="line">含义：创建用户zhangsan，不带任何选项。</span><br></pre>
+
+<p>1）在 <strong>&#x2F;etc&#x2F;passwd</strong> 文件中创建一行关于zhangsan用户的数据 </p>
+<p>2）在 <strong>&#x2F;etc&#x2F;shadow</strong> 文件中新增了一行关于zhangsan 密码的数据 </p>
+<p>3）在 <strong>&#x2F;etc&#x2F;group</strong> 文件中创建一行与用户名相同的组，例如zhangsan </p>
+<p>4）在 <strong>&#x2F;etc&#x2F;gshadow</strong> 文件中新增一行与新增群组相关的密码信息，例如 zhangsan</p>
+<p> 5）自动创建用户的家目录，默认在&#x2F;home下，与用户名同名</p>
+<pre class="highlight"><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">用户名：密码占位符：用户ID（-u）：用户组ID（-g）：注释（-C）：家目录（-d）：解释器（-s）</span><br></pre>
+
+<h6 id="2-usermod修改用户"><a href="#2-usermod修改用户" class="headerlink" title="2)usermod修改用户"></a><strong>2)usermod修改用户</strong></h6><p>命令：usermod(user modify) </p>
+<p>语法：# usermod [选项 选项的值] … 用户名 </p>
+<p>作用：修改用户的各种属性 </p>
+<p>选项：</p>
+<p>-g：表示指定用户的用户主组，选项的值可以是用户组的ID，也可 以是组名 </p>
+<p>-G：表示指定用户的用户附加组，选项的值可以是用户组的ID，也 可以是组名</p>
+<p> -u：uid，用户的id（用户的标识符），系统默认会从500 之后按顺 序分配uid，如果不想使用系统分配的，可以通过该选项自定义【类似于腾 讯QQ 的自选靓号情况】</p>
+<p> -L：锁定用户，锁定后用户无法登陆系统lock </p>
+<p>-U：解锁用户unlock </p>
+<p>-c&lt;备注&gt;：修改用户帐号的备注文字</p>
+<p> -d&lt;登入目录&gt;：修改用户登入时的目录 </p>
+<p>-s：修改用户登入后所使用的shell</p>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-warning copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            菜鸡の博客
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="http://example.com/2022/10/20/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/">
+            http://example.com/2022/10/20/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/10/20/%E9%93%B6%E6%B2%B3%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">银河网络基础 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: '6xOtnwQBAa8C9onmW8iKKfRV-gzGzoHsz',
+        appKey: 'Oz1Yxw8XLVsyfiGux6t1Snk0',
+        placeholder: 'Just go go',
+        path: window.location.pathname,
+        avatar: 'mp',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        serverURLs: 'https://6xotnwqb.lc-cn-n1-shared.com',
+        emojiCDN: '',
+        emojiMaps: '',
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+''
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-text">磁盘分区</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">系统目录结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">文件管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-text">文件命名规则</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89-mkdir%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="toc-text">1） mkdir创建目录</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95"><span class="toc-text">2）删除目录</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="toc-text">3) 创建文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="toc-text">4) 删除文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-%E5%89%AA%E5%88%87%E6%93%8D%E4%BD%9C"><span class="toc-text">5)  剪切操作</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#tar%E6%89%93%E5%8C%85%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-text">tar打包压缩与解压缩</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E6%89%93%E5%8C%85"><span class="toc-text">1) 打包</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E6%89%93%E5%8C%85%E5%B9%B6%E5%8E%8B%E7%BC%A9%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">2) 打包并压缩（重点）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E8%A7%A3%E5%8E%8B"><span class="toc-text">3) 解压</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#zip%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9%EF%BC%88%E4%BA%86%E8%A7%A3%EF%BC%89"><span class="toc-text">zip压缩与解压缩（了解）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-zip%E5%8E%8B%E7%BC%A9"><span class="toc-text">1) zip压缩</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-unzip%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-text">2) unzip解压缩</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-text">查看文件内容</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-cat%E6%9F%A5%E7%9C%8B%E5%8F%8A%E5%90%88%E5%B9%B6"><span class="toc-text">1) cat查看及合并</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-less%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6"><span class="toc-text">2)less分屏显示文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-head%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%BC%80%E5%A4%B4"><span class="toc-text">3)head显示文件开头</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-tail%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E7%BB%93%E5%B0%BE"><span class="toc-text">4)tail显示文件结尾</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%B8%8E%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">用户与用户组</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">1）添加用户组</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89-%E7%94%A8%E6%88%B7%E7%BB%84%E4%BF%AE%E6%94%B9"><span class="toc-text">2） 用户组修改</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E7%94%A8%E6%88%B7%E7%BB%84%E5%88%A0%E9%99%A4"><span class="toc-text">3）用户组删除</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89useradd%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="toc-text">1）useradd添加用户</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-usermod%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">2)usermod修改用户</span></a></li></ol></li></ol>
+</div></main>
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/img/1.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">菜鸡の博客</p>
+<p class="author-description">designed by green-hand7</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>10</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>6</span>
+    <span>分类.</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>6</span>
+    <span>标签</span>
+  </a>
+</div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-text">磁盘分区</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">系统目录结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">文件管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-text">文件命名规则</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89-mkdir%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="toc-text">1） mkdir创建目录</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95"><span class="toc-text">2）删除目录</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="toc-text">3) 创建文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="toc-text">4) 删除文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-%E5%89%AA%E5%88%87%E6%93%8D%E4%BD%9C"><span class="toc-text">5)  剪切操作</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#tar%E6%89%93%E5%8C%85%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-text">tar打包压缩与解压缩</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E6%89%93%E5%8C%85"><span class="toc-text">1) 打包</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E6%89%93%E5%8C%85%E5%B9%B6%E5%8E%8B%E7%BC%A9%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">2) 打包并压缩（重点）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E8%A7%A3%E5%8E%8B"><span class="toc-text">3) 解压</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#zip%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9%EF%BC%88%E4%BA%86%E8%A7%A3%EF%BC%89"><span class="toc-text">zip压缩与解压缩（了解）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-zip%E5%8E%8B%E7%BC%A9"><span class="toc-text">1) zip压缩</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-unzip%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-text">2) unzip解压缩</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-text">查看文件内容</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-cat%E6%9F%A5%E7%9C%8B%E5%8F%8A%E5%90%88%E5%B9%B6"><span class="toc-text">1) cat查看及合并</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-less%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6"><span class="toc-text">2)less分屏显示文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-head%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%BC%80%E5%A4%B4"><span class="toc-text">3)head显示文件开头</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-tail%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E7%BB%93%E5%B0%BE"><span class="toc-text">4)tail显示文件结尾</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%B8%8E%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">用户与用户组</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">1）添加用户组</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89-%E7%94%A8%E6%88%B7%E7%BB%84%E4%BF%AE%E6%94%B9"><span class="toc-text">2） 用户组修改</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E7%94%A8%E6%88%B7%E7%BB%84%E5%88%A0%E9%99%A4"><span class="toc-text">3）用户组删除</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89useradd%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="toc-text">1）useradd添加用户</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-usermod%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">2)usermod修改用户</span></a></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/Linux/">
+        <div class="categories-list-item">
+          Linux
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/web/">
+        <div class="categories-list-item">
+          web
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+        <div class="categories-list-item">
+          数据库
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/CTF/">
+        <div class="categories-list-item">
+          CTF
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/java/">
+        <div class="categories-list-item">
+          java
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
+        <div class="categories-list-item">
+          网络基础
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/CTF/" 
+        title="CTF">
+        <div class="tags-list-item">CTF</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+      <a 
+        href="/tags/web/" 
+        title="web">
+        <div class="tags-list-item">web</div>
+      </a>
+    
+      <a 
+        href="/tags/Linux/" 
+        title="Linux">
+        <div class="tags-list-item">Linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" 
+        title="网络基础">
+        <div class="tags-list-item">网络基础</div>
+      </a>
+    
+      <a 
+        href="/tags/java/" 
+        title="java">
+        <div class="tags-list-item">java</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-text">磁盘分区</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">系统目录结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">文件管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-text">文件命名规则</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89-mkdir%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="toc-text">1） mkdir创建目录</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95"><span class="toc-text">2）删除目录</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="toc-text">3) 创建文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="toc-text">4) 删除文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-%E5%89%AA%E5%88%87%E6%93%8D%E4%BD%9C"><span class="toc-text">5)  剪切操作</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#tar%E6%89%93%E5%8C%85%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-text">tar打包压缩与解压缩</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E6%89%93%E5%8C%85"><span class="toc-text">1) 打包</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E6%89%93%E5%8C%85%E5%B9%B6%E5%8E%8B%E7%BC%A9%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">2) 打包并压缩（重点）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E8%A7%A3%E5%8E%8B"><span class="toc-text">3) 解压</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#zip%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9%EF%BC%88%E4%BA%86%E8%A7%A3%EF%BC%89"><span class="toc-text">zip压缩与解压缩（了解）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-zip%E5%8E%8B%E7%BC%A9"><span class="toc-text">1) zip压缩</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-unzip%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-text">2) unzip解压缩</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-text">查看文件内容</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-cat%E6%9F%A5%E7%9C%8B%E5%8F%8A%E5%90%88%E5%B9%B6"><span class="toc-text">1) cat查看及合并</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-less%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6"><span class="toc-text">2)less分屏显示文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-head%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%BC%80%E5%A4%B4"><span class="toc-text">3)head显示文件开头</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-tail%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E7%BB%93%E5%B0%BE"><span class="toc-text">4)tail显示文件结尾</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%B8%8E%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">用户与用户组</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">1）添加用户组</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89-%E7%94%A8%E6%88%B7%E7%BB%84%E4%BF%AE%E6%94%B9"><span class="toc-text">2） 用户组修改</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E7%94%A8%E6%88%B7%E7%BB%84%E5%88%A0%E9%99%A4"><span class="toc-text">3）用户组删除</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89useradd%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="toc-text">1）useradd添加用户</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-usermod%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">2)usermod修改用户</span></a></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-10-20</div>
+        <a href="/2022/10/20/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/"><div class="recent-posts-item-content">linux基础知识点</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-10-20</div>
+        <a href="/2022/10/20/%E9%93%B6%E6%B2%B3%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"><div class="recent-posts-item-content">银河网络基础</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-09-25</div>
+        <a href="/2022/09/25/%E5%AE%89%E8%A3%85DNS/"><div class="recent-posts-item-content">安装DNS</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-09-23</div>
+        <a href="/2022/09/23/%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8D%97%E4%BA%AC%E7%94%9F%E6%B4%BB/"><div class="recent-posts-item-content">我们在南京生活</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2022
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          菜鸡の博客
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/green-hand7/green-hand7.github.io" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;green-hand7
+          </a>
+        
+      </div>
+    
+    
+    
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+     
+    
+    
+  </body>
+</html>
